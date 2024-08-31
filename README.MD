@@ -5,3 +5,4 @@
 003 Handling Unhandled Routes
 004 An Overview of Error Handling
 005 Implementing a Global Error Handling Middleware
+006 Better Errors and Refactoring
