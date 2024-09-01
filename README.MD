@@ -9,3 +9,4 @@
 007 Catching Errors in Async Functions
 008 Adding 404 Not Found Errors
 009 Errors During Development vs Production
+010 Handling Invalid Database IDs
