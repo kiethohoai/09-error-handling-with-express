@@ -19,3 +19,4 @@
 001 Section Intro
 002 Modelling Users
 003 Creating New Users
+004 Managing Passwords
