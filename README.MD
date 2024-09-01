@@ -11,3 +11,4 @@
 009 Errors During Development vs Production
 010 Handling Invalid Database IDs
 011 Handling Duplicate Database Fields
+012 Handling Mongoose Validation Errors
