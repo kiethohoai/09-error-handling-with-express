@@ -20,3 +20,4 @@
 002 Modelling Users
 003 Creating New Users
 004 Managing Passwords
+005 How Authentication with JWT Works
