@@ -12,3 +12,4 @@
 010 Handling Invalid Database IDs
 011 Handling Duplicate Database Fields
 012 Handling Mongoose Validation Errors
+013 Errors Outside Express Unhandled Rejections

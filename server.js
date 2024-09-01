@@ -21,7 +21,16 @@ mongoose
   });
 
 const port = process.env.PORT || 3000;
-
-app.listen(port, () => {
+const server = app.listen(port, () => {
   console.log(`🚀App running on port ${port}...`);
+});
+
+// todo Handle Errors Outside Express Unhandled Rejections
+process.on('unhandledRejection', err => {
+  console.log('🚀🚀🚀  err.name=', err.name);
+  console.log('🚀🚀🚀  err.message=', err.message);
+  console.log('🚀🚀🚀 UNHANDLED REJECTIONS => Shutting down...');
+  server.close(() => {
+    process.exit(1);
+  });
 });
