@@ -23,3 +23,4 @@
 005 How Authentication with JWT Works
 006 Signing up Users
 007 Logging in Users
+008 Protecting Tour Routes - Part 1
