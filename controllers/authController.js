@@ -19,6 +19,7 @@ exports.signup = catchAsync(async (req, res, next) => {
     password: req.body.password,
     passwordConfirm: req.body.passwordConfirm,
     passwordChangedAt: req.body.passwordChangedAt,
+    role: req.body.role,
   });
 
   const token = signToken(newUser._id);
@@ -71,7 +72,6 @@ exports.protect = catchAsync(async (req, res, next) => {
 
   // 2. Vertify token
   const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
-  console.log('🚀🚀🚀  decoded=', decoded);
 
   // 3. Check if user still exists
   const curUser = await User.findById(decoded.id);
@@ -84,8 +84,19 @@ exports.protect = catchAsync(async (req, res, next) => {
     return next(new AppError('User currently changed password. Please login again to get access!'));
   }
 
-  console.log('COMPLETED');
-
   // GRANT ACCESS
+  req.user = curUser;
   next();
 });
+
+// todo restrictTo
+exports.restrictTo = (...roles) => {
+  return (req, res, next) => {
+    // roles ["admin" ,"lead-guide"]
+    if (!roles.includes(req.user.role)) {
+      return next(new AppError('You do not have permission to perform this action', 403));
+    }
+
+    next();
+  };
+};
