@@ -18,6 +18,7 @@ exports.signup = catchAsync(async (req, res, next) => {
     email: req.body.email,
     password: req.body.password,
     passwordConfirm: req.body.passwordConfirm,
+    passwordChangedAt: req.body.passwordChangedAt,
   });
 
   const token = signToken(newUser._id);
@@ -60,17 +61,12 @@ exports.login = catchAsync(async (req, res, next) => {
 exports.protect = catchAsync(async (req, res, next) => {
   // 1. Getting token and check of it's there
   let token;
-  if (
-    req.headers.authorization &&
-    req.headers.authorization.startsWith('Bearer')
-  ) {
+  if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
     token = req.headers.authorization.split(' ')[1];
   }
   console.log('🚀🚀🚀  token=', token);
   if (!token) {
-    return next(
-      new AppError('You are not login! Please login to get access.', 401),
-    );
+    return next(new AppError('You are not login! Please login to get access.', 401));
   }
 
   // 2. Vertify token
@@ -78,7 +74,18 @@ exports.protect = catchAsync(async (req, res, next) => {
   console.log('🚀🚀🚀  decoded=', decoded);
 
   // 3. Check if user still exists
-  // 4. Check if user changed password after the token was issued
+  const curUser = await User.findById(decoded.id);
+  if (!curUser) {
+    return next(new AppError('The user belong to this token does no longer exist!', 401));
+  }
 
+  // 4. Check if user changed password after the token was issued
+  if (curUser.changedPasswordAfter(decoded.iat)) {
+    return next(new AppError('User currently changed password. Please login again to get access!'));
+  }
+
+  console.log('COMPLETED');
+
+  // GRANT ACCESS
   next();
 });
