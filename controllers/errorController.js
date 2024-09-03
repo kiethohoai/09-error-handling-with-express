@@ -12,10 +12,13 @@ const handleDuplicateFieldsDB = err => {
 };
 
 const handleValidationErrorDB = err => {
-  // FIXME
   const errors = Object.values(err.errors).map(el => el.message);
   const message = `INVALID INPUT DATA: ${errors.join('. ')} `;
   return new AppError(message, 400);
+};
+
+const handleJsonWebTokenError = err => {
+  return new AppError('Invalid Token. Please login again!', 401);
 };
 
 const sendErrorDev = (err, res) => {
@@ -57,6 +60,9 @@ module.exports = (err, req, res, next) => {
     if (error.code === 11000) error = handleDuplicateFieldsDB(error);
     if (error.name === 'ValidationError')
       error = handleValidationErrorDB(error);
+
+    if (error.name === 'JsonWebTokenError')
+      error = handleJsonWebTokenError(error);
 
     // find result and send to the client
     sendErrorProd(error, res);

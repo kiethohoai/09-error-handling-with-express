@@ -1,12 +1,13 @@
 const jwt = require('jsonwebtoken');
+const { promisify } = require('util');
 const User = require('../models/userModel');
 const catchAsync = require('../utils/catchAsync');
 const AppError = require('../utils/appError');
 
 // todo SIGNTOKEN
-const signToken = id => {
+const signToken = (id) => {
   return jwt.sign({ id: id }, process.env.JWT_SECRET, {
-    expiresIn: process.env.JWT_EXPIRES_IN
+    expiresIn: process.env.JWT_EXPIRES_IN,
   });
 };
 
@@ -16,7 +17,7 @@ exports.signup = catchAsync(async (req, res, next) => {
     name: req.body.name,
     email: req.body.email,
     password: req.body.password,
-    passwordConfirm: req.body.passwordConfirm
+    passwordConfirm: req.body.passwordConfirm,
   });
 
   const token = signToken(newUser._id);
@@ -25,8 +26,8 @@ exports.signup = catchAsync(async (req, res, next) => {
     status: 'success',
     token,
     data: {
-      user: newUser
-    }
+      user: newUser,
+    },
   });
 });
 
@@ -51,10 +52,11 @@ exports.login = catchAsync(async (req, res, next) => {
   const token = signToken(user._id);
   res.status(200).json({
     status: 'success',
-    token
+    token,
   });
 });
 
+// todo PROTECT
 exports.protect = catchAsync(async (req, res, next) => {
   // 1. Getting token and check of it's there
   let token;
@@ -67,11 +69,14 @@ exports.protect = catchAsync(async (req, res, next) => {
   console.log('🚀🚀🚀  token=', token);
   if (!token) {
     return next(
-      new AppError('You are not login! Please login to get access.', 401)
+      new AppError('You are not login! Please login to get access.', 401),
     );
   }
 
   // 2. Vertify token
+  const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
+  console.log('🚀🚀🚀  decoded=', decoded);
+
   // 3. Check if user still exists
   // 4. Check if user changed password after the token was issued
 
