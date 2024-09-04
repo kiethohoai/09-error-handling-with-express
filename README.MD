@@ -31,3 +31,4 @@
 012 Password Reset Functionality Reset Token
 012 Password Reset Functionality Reset Token V2
 013 Sending Emails with Nodemailer
+014 Password Reset Functionality Setting New Password
