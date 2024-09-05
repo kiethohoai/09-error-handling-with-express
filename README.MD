@@ -37,9 +37,11 @@
 017 Deleting the Current User
 018 Security Best Practices
 019 Sending JWT via Cookie
-020 Implementing Rate Limiting
+020 Implementing Rate Limiting 
 021 Setting Security HTTP Headers
 022 Data Sanitization
 023 Preventing Parameter Pollution
 
 ### 11 - Modelling Data and Advanced Mongoose
+
+002 MongoDB Data Modelling
