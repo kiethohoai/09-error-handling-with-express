@@ -47,3 +47,4 @@
 002 MongoDB Data Modelling
 003 Designing Our Data Model
 004 Modelling Locations (Geospatial Data)
+005 Modelling Tour Guides Embedding
