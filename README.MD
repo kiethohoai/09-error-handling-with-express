@@ -36,3 +36,4 @@
 016 Updating the Current User Data
 017 Deleting the Current User
 018 Security Best Practices
+019 Sending JWT via Cookie

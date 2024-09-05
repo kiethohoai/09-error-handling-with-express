@@ -16,6 +16,24 @@ const signToken = id => {
 // todo createSendToken
 const createSendToken = (user, statusCode, res) => {
   const token = signToken(user._id);
+
+  // Prepare Cookies and Send JWT via Cookies
+  const cookieOption = {
+    expires: new Date(
+      Date.now() + process.env.JWT_COOKIES_EXPIRES_IN * 24 * 60 * 60 + 1000
+    ),
+    httpOnly: true
+  };
+
+  if (process.env.NODE_END === 'production') {
+    cookieOption.secure = true;
+  }
+
+  res.cookie('jwt', token, cookieOption);
+
+  // Remove the password from the output
+  user.password = undefined;
+
   res.status(statusCode).json({
     status: 'success',
     token,
