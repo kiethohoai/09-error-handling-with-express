@@ -37,3 +37,4 @@
 017 Deleting the Current User
 018 Security Best Practices
 019 Sending JWT via Cookie
+020 Implementing Rate Limiting
