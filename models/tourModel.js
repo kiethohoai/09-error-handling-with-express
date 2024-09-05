@@ -110,7 +110,7 @@ const tourSchema = new mongoose.Schema(
     guides: Array,
     */
 
-    // Child Ref
+    //todo Child Ref
     guides: [
       {
         type: mongoose.Schema.ObjectId,
@@ -160,10 +160,18 @@ tourSchema.pre(/^find/, function (next) {
   next();
 });
 
+tourSchema.pre(/^find/, function (next) {
+  this.populate('guides');
+
+  next();
+});
+
+/* 
 tourSchema.post(/^find/, function (docs, next) {
   console.log(`Query took ${Date.now() - this.start} milliseconds!`);
   next();
 });
+ */
 
 // AGGREGATION MIDDLEWARE
 tourSchema.pre('aggregate', function (next) {
