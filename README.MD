@@ -39,3 +39,4 @@
 019 Sending JWT via Cookie
 020 Implementing Rate Limiting
 021 Setting Security HTTP Headers
+022 Data Sanitization
