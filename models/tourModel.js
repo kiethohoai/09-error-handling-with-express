@@ -162,7 +162,6 @@ tourSchema.pre(/^find/, function (next) {
 
 tourSchema.pre(/^find/, function (next) {
   this.populate('guides');
-
   next();
 });
 

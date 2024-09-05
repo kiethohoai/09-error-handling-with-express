@@ -8,6 +8,7 @@ const hpp = require('hpp');
 
 const tourRouter = require('./routes/tourRoutes');
 const userRouter = require('./routes/userRoutes');
+const reviewRouter = require('./routes/reviewRoutes');
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
 
@@ -24,7 +25,7 @@ const limiter = rateLimit({
   windowMs: 60 * 60 * 1000,
   limit: 1000,
   message: 'Too many requests from this IP, please try again in 1 hour!',
-  statusCode: 429
+  statusCode: 429,
 });
 
 app.use('/api', limiter);
@@ -55,6 +56,7 @@ app.use((req, res, next) => {
 // 3) ROUTES
 app.use('/api/v1/tours', tourRouter);
 app.use('/api/v1/users', userRouter);
+app.use('/api/v1/reviews', reviewRouter);
 app.all('*', (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
 });
