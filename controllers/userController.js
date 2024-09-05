@@ -5,7 +5,7 @@ const User = require('./../models/userModel');
 // todo filterObj
 const filterObj = (obj, ...allowFields) => {
   const newObj = {};
-  Object.keys(obj).forEach(el => {
+  Object.keys(obj).forEach((el) => {
     if (allowFields.includes(el)) newObj[el] = obj[el];
   });
 
@@ -20,8 +20,8 @@ exports.getAllUsers = catchAsync(async (req, res) => {
     status: 'success',
     results: users.length,
     data: {
-      users
-    }
+      users,
+    },
   });
 });
 
@@ -42,12 +42,12 @@ exports.updateMe = catchAsync(async (req, res, next) => {
   // 3. Update user document
   const updatedUser = await User.findByIdAndUpdate(req.user.id, filteredBody, {
     new: true,
-    runValidators: true
+    runValidators: true,
   });
 
   res.status(200).json({
     status: 'success',
-    user: updatedUser
+    user: updatedUser,
   });
 });
 
@@ -57,31 +57,31 @@ exports.deleteMe = catchAsync(async (req, res, next) => {
 
   res.status(204).json({
     status: 'sucess',
-    message: 'Delete Current User Successfully!'
+    message: 'Delete Current User Successfully!',
   });
 });
 
 exports.getUser = (req, res) => {
   res.status(500).json({
     status: 'error',
-    message: 'This route is not yet defined!'
+    message: 'This route is not yet defined!',
   });
 };
 exports.createUser = (req, res) => {
   res.status(500).json({
     status: 'error',
-    message: 'This route is not yet defined!'
+    message: 'This route is not yet defined!',
   });
 };
 exports.updateUser = (req, res) => {
   res.status(500).json({
     status: 'error',
-    message: 'This route is not yet defined!'
+    message: 'This route is not yet defined!',
   });
 };
 exports.deleteUser = (req, res) => {
   res.status(500).json({
     status: 'error',
-    message: 'This route is not yet defined!'
+    message: 'This route is not yet defined!',
   });
 };
