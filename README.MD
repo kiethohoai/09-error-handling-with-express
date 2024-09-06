@@ -65,3 +65,4 @@
 020 Importing Review and User Data
 021 Improving Read Performance with Indexes
 022 Calculating Average Rating on Tours - Part 1
+023 Calculating Average Rating on Tours - Part 2
