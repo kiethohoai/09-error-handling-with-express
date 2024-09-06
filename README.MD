@@ -57,3 +57,4 @@
 012 Implementing Simple Nested Routes
 013 Nested Routes with Express
 014 Adding a Nested GET Endpoint
+015 Building Handler Factory Functions Delete

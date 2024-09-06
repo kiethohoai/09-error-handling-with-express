@@ -1,7 +1,9 @@
+const User = require('../models/userModel');
 const AppError = require('../utils/appError');
 const catchAsync = require('../utils/catchAsync');
 const Tour = require('./../models/tourModel');
 const APIFeatures = require('./../utils/apiFeatures');
+const factory = require('./handleFactory');
 
 exports.aliasTopTours = (req, res, next) => {
   req.query.limit = '5';
@@ -72,6 +74,10 @@ exports.updateTour = catchAsync(async (req, res, next) => {
   });
 });
 
+// todo deleteTou
+exports.deleteTour = factory.deleteOne(Tour);
+
+/* 
 exports.deleteTour = catchAsync(async (req, res, next) => {
   const tour = await Tour.findByIdAndDelete(req.params.id);
 
@@ -84,6 +90,7 @@ exports.deleteTour = catchAsync(async (req, res, next) => {
     data: null,
   });
 });
+ */
 
 exports.getTourStats = catchAsync(async (req, res, next) => {
   const stats = await Tour.aggregate([

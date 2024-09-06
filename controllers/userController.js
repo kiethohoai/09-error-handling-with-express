@@ -1,6 +1,7 @@
 const AppError = require('../utils/appError');
 const catchAsync = require('../utils/catchAsync');
 const User = require('./../models/userModel');
+const factory = require('./handleFactory');
 
 // todo filterObj
 const filterObj = (obj, ...allowFields) => {
@@ -79,9 +80,6 @@ exports.updateUser = (req, res) => {
     message: 'This route is not yet defined!',
   });
 };
-exports.deleteUser = (req, res) => {
-  res.status(500).json({
-    status: 'error',
-    message: 'This route is not yet defined!',
-  });
-};
+
+// todo deleteUser
+exports.deleteUser = factory.deleteOne(User);
