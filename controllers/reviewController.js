@@ -1,8 +1,15 @@
 const Review = require('./../models/reviewModel');
 const catchAsync = require('../utils/catchAsync');
 
+// todo getAllReviews
 exports.getAllReviews = catchAsync(async (req, res, next) => {
-  const reviews = await Review.find();
+  // Query to DB, get all reviews belong this tourId
+  let filter = {};
+  if (req.params.tourId) {
+    filter = { tour: req.params.tourId };
+  }
+
+  const reviews = await Review.find(filter);
 
   res.status(200).json({
     status: 'success',
@@ -13,6 +20,7 @@ exports.getAllReviews = catchAsync(async (req, res, next) => {
   });
 });
 
+// todo createReview
 exports.createReview = catchAsync(async (req, res, next) => {
   // INPUT: userId = req.user.id (protect), tourId = req.params.tourId (params)
   if (!req.body.tour) req.body.tour = req.params.tourId;

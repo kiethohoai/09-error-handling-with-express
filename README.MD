@@ -56,3 +56,4 @@
 011 Virtual Populate Tours and Reviews
 012 Implementing Simple Nested Routes
 013 Nested Routes with Express
+014 Adding a Nested GET Endpoint
