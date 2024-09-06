@@ -54,3 +54,4 @@
 009 Creating and Getting Reviews
 010 Populating Reviews
 011 Virtual Populate Tours and Reviews
+012 Implementing Simple Nested Routes
