@@ -59,3 +59,4 @@
 014 Adding a Nested GET Endpoint
 015 Building Handler Factory Functions Delete
 016 Factory Functions Update and Create
+017 Factory Functions Reading
