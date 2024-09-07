@@ -8,3 +8,4 @@
 007 Extending Our Base Template with Blocks
 008 Setting up the Project Structure
 009 Building the Tour Overview - Part 1
+010 Building the Tour Overview - Part 2
