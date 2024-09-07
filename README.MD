@@ -9,3 +9,4 @@
 008 Setting up the Project Structure
 009 Building the Tour Overview - Part 1
 010 Building the Tour Overview - Part 2
+011 Building the Tour Page - Part 1
