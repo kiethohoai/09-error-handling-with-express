@@ -68,3 +68,4 @@
 023 Calculating Average Rating on Tours - Part 2
 024 Preventing Duplicate Reviews
 025 Geospatial Queries Finding Tours Within Radius
+026 Geospatial Aggregation Calculating Distances
