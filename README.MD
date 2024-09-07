@@ -4,3 +4,4 @@
 003 Setting up Pug in Express
 004 First Steps with Pug
 005 Creating Our Base Template
+006 Including Files into Pug Templates
