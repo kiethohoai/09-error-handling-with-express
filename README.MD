@@ -6,3 +6,4 @@
 005 Creating Our Base Template
 006 Including Files into Pug Templates
 007 Extending Our Base Template with Blocks
+008 Setting up the Project Structure
