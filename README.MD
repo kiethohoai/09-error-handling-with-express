@@ -7,3 +7,4 @@
 006 Including Files into Pug Templates
 007 Extending Our Base Template with Blocks
 008 Setting up the Project Structure
+009 Building the Tour Overview - Part 1
