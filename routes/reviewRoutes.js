@@ -1,8 +1,7 @@
 const express = require('express');
-const reviewController = require('../controllers/reviewController');
-const authController = require('../controllers/authController');
+const reviewController = require('./../controllers/reviewController');
+const authController = require('./../controllers/authController');
 
-//todo Merge tour & review routes
 const router = express.Router({ mergeParams: true });
 
 router.use(authController.protect);
@@ -20,11 +19,11 @@ router
   .route('/:id')
   .get(reviewController.getReview)
   .patch(
-    authController.restrictTo('admin', 'user'),
+    authController.restrictTo('user', 'admin'),
     reviewController.updateReview
   )
   .delete(
-    authController.restrictTo('admin', 'user'),
+    authController.restrictTo('user', 'admin'),
     reviewController.deleteReview
   );
 
